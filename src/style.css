@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ev-item {
+	white-space: normal;
+}
+
+/* Modal */
+.modal-container {
+	@apply flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0;
+}
+.modal-container .modal {
+	@apply inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full;
+}
+
+/* Fixed bar */
+.fixed-bar {
+    @apply fixed bottom-0 w-full bg-white py-4 flex items-center justify-around z-40;
+}
+
+/* Inputs */
+.input {
+	@apply mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md overflow-hidden h-8 px-2 border;
+}
+.select {
+	@apply mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md overflow-hidden h-8 border;
+}
+.radio {
+	@apply text-center self-center py-2 px-4 rounded-lg cursor-pointer hover:opacity-75 w-full;
+}
+input:checked ~ .radio {
+    @apply bg-blue-600 text-white;
+}
+.btn {
+	@apply w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm;
+}
+.btn-red {
+	@apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+}
+.btn-green {
+	@apply bg-green-600 text-white hover:bg-green-700 focus:ring-green-500;
+}
+.btn-blue {
+	@apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+}
+.btn-white {
+	@apply bg-white text-gray-700 hover:bg-gray-50 focus:ring-indigo-500 border border-gray-300;
+}
+
+/* Tabs */
+.tab {
+    @apply text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none
+}
+.tab.active{
+    @apply text-blue-500 border-b-2 font-medium border-blue-500
+}
+.tab-container{
+    @apply hidden px-1 shadow pb-2
+}
+.tab-container.active{
+    @apply block
+}

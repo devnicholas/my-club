@@ -1,0 +1,24 @@
+{
+  "name": "my-club",
+  "version": "0.0.1",
+  "description": "Manager system for FIFA carrers",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack && tailwindcss -i ./src/style.css -o ./dist/style.css"
+  },
+  "keywords": [
+    "FIFA",
+    "Manager",
+    "Carrer"
+  ],
+  "author": "Nicholas Stefano <nicholas.stefanob@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^2.2.16"
+  },
+  "devDependencies": {
+    "webpack": "^5.55.1",
+    "webpack-cli": "^4.8.0"
+  }
+}

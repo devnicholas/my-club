@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>My Club</title>
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.css"
+		/>
+		<link rel="stylesheet" href="./dist/style.css" />
+	</head>
+	<body class="bg-indigo-100" id="homepage">
+		<header class="container mx-auto mt-1">
+			<h1 class="text-center font-semibold text-3xl" id="myClub">MyClub</h1>
+		</header>
+		<div class="container mx-auto pt-3 px-1">
+			<div
+				class="
+					sm:flex sm:justify-start sm:items-center sm:flex-row-reverse
+				"
+			>
+				<button class="btn btn-blue mb-1" id="openNewEventModal">
+					Novo evento
+				</button>
+				<div class="bg-gray-200 rounded-lg flex mb-1">
+					<div class="inline-flex rounded-lg w-full">
+						<input
+							type="radio"
+							name="viewType"
+							id="listYear"
+							checked
+							hidden
+						/>
+						<label for="listYear" class="radio">Lista</label>
+					</div>
+					<div class="inline-flex rounded-lg w-full">
+						<input
+							type="radio"
+							name="viewType"
+							id="dayGridMonth"
+							hidden
+						/>
+						<label for="dayGridMonth" class="radio">Mensal</label>
+					</div>
+				</div>
+			</div>
+			<div id="calendar" class="my-3 shadow w-full h-full"></div>
+		</div>
+		<footer
+			class="mt-6 bg-white py-4 flex align-middle justify-center w-full"
+		>
+			<p>
+				&copy; 2021. Feito com &hearts; por
+				<a href="mailto:nicholas.stefanob@gmail.com"
+					>Nicholas Stefano</a
+				>
+			</p>
+		</footer>        
+		<div class="fixed-bar">
+			<div>
+				<a href="index.html">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 512 512"
+						class="w-8"
+					>
+						<path
+							d="M469.666,216.45,271.078,33.749a34,34,0,0,0-47.062.98L41.373,217.373,32,226.745V496H208V328h96V496H480V225.958ZM248.038,56.771c.282,0,.108.061-.013.18C247.9,56.832,247.756,56.771,248.038,56.771ZM448,464H336V328a32,32,0,0,0-32-32H208a32,32,0,0,0-32,32V464H64V240L248.038,57.356c.013-.012.014-.023.024-.035L448,240Z"
+							class="ci-primary"
+						/>
+					</svg>
+				</a>
+			</div>
+			<div>
+				<a href="#">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 512 512"
+						class="w-8"
+					>
+						<path
+							d="M245.151,168a88,88,0,1,0,88,88A88.1,88.1,0,0,0,245.151,168Zm0,144a56,56,0,1,1,56-56A56.063,56.063,0,0,1,245.151,312Z"
+							class="ci-primary"
+						/>
+						<path
+							d="M464.7,322.319l-31.77-26.153a193.081,193.081,0,0,0,0-80.332l31.77-26.153a19.941,19.941,0,0,0,4.606-25.439l-32.612-56.483a19.936,19.936,0,0,0-24.337-8.73l-38.561,14.447a192.038,192.038,0,0,0-69.54-40.192L297.49,32.713A19.936,19.936,0,0,0,277.762,16H212.54a19.937,19.937,0,0,0-19.728,16.712L186.05,73.284a192.03,192.03,0,0,0-69.54,40.192L77.945,99.027a19.937,19.937,0,0,0-24.334,8.731L21,164.245a19.94,19.94,0,0,0,4.61,25.438l31.767,26.151a193.081,193.081,0,0,0,0,80.332l-31.77,26.153A19.942,19.942,0,0,0,21,347.758l32.612,56.483a19.937,19.937,0,0,0,24.337,8.73l38.562-14.447a192.03,192.03,0,0,0,69.54,40.192l6.762,40.571A19.937,19.937,0,0,0,212.54,496h65.222a19.936,19.936,0,0,0,19.728-16.712l6.763-40.572a192.038,192.038,0,0,0,69.54-40.192l38.564,14.449a19.938,19.938,0,0,0,24.334-8.731L469.3,347.755A19.939,19.939,0,0,0,464.7,322.319Zm-50.636,57.12-48.109-18.024-7.285,7.334a159.955,159.955,0,0,1-72.625,41.973l-10,2.636L267.6,464h-44.89l-8.442-50.642-10-2.636a159.955,159.955,0,0,1-72.625-41.973l-7.285-7.334L76.241,379.439,53.8,340.562l39.629-32.624-2.7-9.973a160.9,160.9,0,0,1,0-83.93l2.7-9.972L53.8,171.439l22.446-38.878,48.109,18.024,7.285-7.334a159.955,159.955,0,0,1,72.625-41.973l10-2.636L222.706,48H267.6l8.442,50.642,10,2.636a159.955,159.955,0,0,1,72.625,41.973l7.285,7.334,48.109-18.024,22.447,38.877-39.629,32.625,2.7,9.972a160.9,160.9,0,0,1,0,83.93l-2.7,9.973,39.629,32.623Z"
+							class="ci-primary"
+						/>
+					</svg>
+				</a>
+			</div>
+		</div>
+		<!-- Modal Cadastro de item -->
+		<div
+			id="modal-new-event"
+			class="hidden z-50 inset-0 overflow-y-auto"
+			aria-labelledby="modal-title"
+			role="dialog"
+			aria-modal="true"
+		>
+			<div class="modal-container">
+				<div
+					class="
+						fixed
+						inset-0
+						bg-gray-500 bg-opacity-75
+						transition-opacity
+					"
+					aria-hidden="true"
+				></div>
+				<span
+					class="hidden sm:inline-block sm:align-middle sm:h-screen"
+					aria-hidden="true"
+					>&#8203;</span
+				>
+				<div class="modal">
+					<div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+						<form
+							id="newEvent"
+							class="sm:flex sm:items-start sm:flex-wrap"
+						>
+							<div class="sm:w-1/3 mb-1 sm:pr-1">
+								<label
+									for="title"
+									class="
+										block
+										text-sm
+										font-medium
+										text-gray-700
+									"
+									>Título</label
+								>
+								<input
+									type="text"
+									name="title"
+									id="title"
+									class="input"
+								/>
+							</div>
+							<div class="sm:w-1/3 mb-1 sm:pr-1">
+								<label
+									for="start"
+									class="
+										block
+										text-sm
+										font-medium
+										text-gray-700
+									"
+									>Data</label
+								>
+								<input
+									type="date"
+									name="start"
+									id="start"
+									class="input"
+								/>
+							</div>
+							<div class="sm:w-1/3 mb-1 sm:pr-1">
+								<label
+									for="color"
+									class="
+										block
+										text-sm
+										font-medium
+										text-gray-700
+									"
+									>Cor</label
+								>
+								<select name="color" id="color" class="select">
+									<option value="blue" selected>Azul</option>
+									<option value="green">Verde</option>
+									<option value="red">Vermelho</option>
+									<option value="yellow">Amarelo</option>
+								</select>
+							</div>
+							<div class="sm:w-full mb-1 sm:pr-1">
+								<label
+									for="description"
+									class="
+										block
+										text-sm
+										font-medium
+										text-gray-700
+									"
+									>Descrição</label
+								>
+								<textarea
+									type="text"
+									name="description"
+									id="description"
+									class="input h-18 py-1"
+								></textarea>
+							</div>
+						</form>
+					</div>
+					<div
+						class="
+							bg-gray-50
+							px-4
+							py-3
+							sm:px-6 sm:flex sm:flex-row-reverse
+						"
+					>
+						<button
+							type="button"
+							class="btn btn-green mb-1 sm:mb-0"
+							id="saveNewEvent"
+						>
+							Salvar
+						</button>
+						<button
+							type="button"
+							class="btn btn-white"
+							id="closeNewEventModal"
+						>
+							Cancelar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal Editar item -->
+		<div
+			id="modal-edit-event"
+			class="hidden z-50 inset-0 overflow-y-auto"
+			aria-labelledby="modal-title"
+			role="dialog"
+			aria-modal="true"
+		>
+			<div class="modal-container">
+				<div
+					class="
+						fixed
+						inset-0
+						bg-gray-500 bg-opacity-75
+						transition-opacity
+					"
+					aria-hidden="true"
+				></div>
+				<span
+					class="hidden sm:inline-block sm:align-middle sm:h-screen"
+					aria-hidden="true"
+					>&#8203;</span
+				>
+				<div class="modal">
+					<div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+						<form
+							id="editEvent"
+							class="sm:flex sm:items-start sm:flex-wrap"
+						>
+							<input type="hidden" name="id" />
+							<div class="sm:w-1/3 mb-1 sm:pr-1">
+								<label
+									for="title"
+									class="
+										block
+										text-sm
+										font-medium
+										text-gray-700
+									"
+									>Título</label
+								>
+								<input
+									type="text"
+									name="title"
+									id="title"
+									class="input"
+								/>
+							</div>
+							<div class="sm:w-1/3 mb-1 sm:pr-1">
+								<label
+									for="start"
+									class="
+										block
+										text-sm
+										font-medium
+										text-gray-700
+									"
+									>Data</label
+								>
+								<input
+									type="date"
+									name="start"
+									id="start"
+									class="input"
+								/>
+							</div>
+							<div class="sm:w-1/3 mb-1 sm:pr-1">
+								<label
+									for="color"
+									class="
+										block
+										text-sm
+										font-medium
+										text-gray-700
+									"
+									>Cor</label
+								>
+								<select name="color" id="color" class="select">
+									<option value="blue" selected>Azul</option>
+									<option value="green">Verde</option>
+									<option value="red">Vermelho</option>
+									<option value="yellow">Amarelo</option>
+								</select>
+							</div>
+							<div class="sm:w-full mb-1 sm:pr-1">
+								<label
+									for="description"
+									class="
+										block
+										text-sm
+										font-medium
+										text-gray-700
+									"
+									>Descrição</label
+								>
+								<textarea
+									type="text"
+									name="description"
+									id="description"
+									class="input py-1 h-18"
+								></textarea>
+							</div>
+						</form>
+					</div>
+					<div
+						class="
+							bg-gray-50
+							px-4
+							py-3
+							sm:px-6 sm:flex sm:flex-row-reverse
+						"
+					>
+						<button
+							type="button"
+							class="btn btn-green mb-1 sm:mb-0"
+							id="saveEvent"
+						>
+							Salvar
+						</button>
+						<button
+							type="button"
+							class="btn btn-red mb-1 sm:mb-0"
+							id="deleteEvent"
+						>
+							Excluir
+						</button>
+						<button
+							type="button"
+							class="btn btn-white"
+							id="closeEditEventModal"
+						>
+							Cancelar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.js"></script>
+		<script src="./dist/main.js"></script>
+	</body>
+</html>
