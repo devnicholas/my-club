@@ -171,8 +171,8 @@ const config = {
 		return configs && configs.club ? configs.club : "MyClub";
 	},
 	exportData: () => {
-		const allKeys = ["events", "config"];
-		const nonArrayKeys = [];
+		const allKeys = ["events", "config", "onboarding"];
+		const nonArrayKeys = ["onboarding"];
 		let data = {};
 		allKeys.forEach((key) => {
 			const value = storage.getItemLocal(
@@ -185,7 +185,7 @@ const config = {
 	},
 	importData: (data) => {
 		for (var key in data) {
-			storage.setItemLocal(key, data[key], typeof data[key] === 'object')
+			storage.setItemLocal(key, data[key], typeof data[key] === "object");
 		}
 	},
 };

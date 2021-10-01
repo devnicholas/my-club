@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>My Club</title>
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.css"
+		/>
+		<link rel="stylesheet" href="./dist/style.css" />
+	</head>
+	<body id="welcome">
+		<div
+			class="
+				flex
+				items-center
+				min-h-screen
+				p-4
+				bg-indigo-100
+				lg:justify-center
+			"
+		>
+			<div
+				class="
+					flex flex-col
+					overflow-hidden
+					bg-white
+					rounded-md
+					shadow-lg
+					max
+					md:flex-row md:flex-1
+					lg:max-w-screen-md
+				"
+			>
+				<div
+					class="
+						p-4
+						py-6
+						text-white
+						bg-blue-500
+						md:w-80
+						md:flex-shrink-0
+						md:flex
+						md:flex-col
+						md:items-center
+						md:justify-evenly
+					"
+				>
+					<div
+						class="
+							my-3
+							text-4xl
+							font-bold
+							tracking-wider
+							text-center
+						"
+					>
+						Olá Manager
+					</div>
+					<p
+						class="
+							flex flex-col
+							items-center
+							justify-center
+							mt-6
+							text-center
+						"
+					>
+						<span>Bem vindo(a) ao MyClub!</span>
+					</p>
+					<p
+						class="
+							mt-10
+							font-normal
+							text-center text-gray-300
+							md:mt-0
+						"
+					>
+						O MyClub é um sistema de gerenciamento de um clube voltado para o Modo Carreira do FIFA.
+                        É uma ótima solução para dar mais realismo ao seu Modo Carreira!
+					</p>
+					<p class="mt-6 text-sm text-center text-gray-300">
+						<a href="sobre.html" class="underline">Conheça mais sobre o projeto</a>
+					</p>
+				</div>
+				<div class="p-5 bg-white md:flex-1">
+					<h3 class="my-4 text-2xl font-semibold text-gray-700">
+						Crie agora seu clube
+					</h3>
+					<form id="onboarding" class="flex flex-col space-y-5">
+						<div class="flex flex-col space-y-1">
+							<label
+								for="clubLong"
+								class="text-sm font-semibold text-gray-500"
+								>Nome completo do clube</label
+							>
+							<input
+								type="text"
+								id="clubLong"
+								autofocus
+                                placeholder="Ex.: Clube de Regatas do Flamengo"
+								class="
+									px-4
+									py-2
+									transition
+									duration-300
+									border border-gray-300
+									rounded
+									focus:border-transparent
+									focus:outline-none
+									focus:ring-4
+									focus:ring-blue-200
+								"
+							/>
+						</div>
+						<div class="flex flex-col space-y-1">
+                            <label
+                                for="club"
+                                class="text-sm font-semibold text-gray-500"
+                                >Como o clube é conhecido</label
+                            >
+							<input
+								type="text"
+								id="club"
+                                placeholder="Ex.: Flamengo"
+								class="
+									px-4
+									py-2
+									transition
+									duration-300
+									border border-gray-300
+									rounded
+									focus:border-transparent
+									focus:outline-none
+									focus:ring-4
+									focus:ring-blue-200
+								"
+							/>
+						</div>
+						<div>
+							<button
+                                type="button"
+								class="
+									w-full
+									px-4
+									py-2
+									text-lg
+									font-semibold
+									text-white
+									transition-colors
+									duration-300
+									bg-blue-500
+									rounded-md
+									shadow
+									hover:bg-blue-600
+									focus:outline-none
+									focus:ring-blue-200
+									focus:ring-4
+								"
+                                id="saveConfigs"
+							>
+								Salvar
+							</button>
+						</div>
+						<div class="flex flex-col space-y-5">
+							<span
+								class="
+									flex
+									items-center
+									justify-center
+									space-x-2
+								"
+							>
+								<span class="h-px bg-gray-400 w-14"></span>
+								<span class="font-normal text-gray-500"
+									>OU</span
+								>
+								<span class="h-px bg-gray-400 w-14"></span>
+							</span>
+							<div class="flex flex-col space-y-4">
+								<a
+									href="#"
+									class="
+										flex
+										items-center
+										justify-center
+										px-4
+										py-2
+										space-x-2
+										transition-colors
+										duration-300
+										border border-blue-500
+										rounded-md
+										group
+										hover:bg-blue-500
+										focus:outline-none
+									"
+                                    id="importData"
+								>
+									<span
+										class="
+											text-sm
+											font-medium
+											text-blue-500
+											group-hover:text-white
+										"
+										>Importar meu clube</span
+									>
+								</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.js"></script>
+		<script src="./dist/main.js"></script>
+	</body>
+</html>
