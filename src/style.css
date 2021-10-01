@@ -10,6 +10,9 @@
 .modal-container {
 	@apply flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0;
 }
+.modal-container .modal-bg {
+    @apply fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity
+}
 .modal-container .modal {
 	@apply inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full;
 }
@@ -20,6 +23,9 @@
 }
 
 /* Inputs */
+.label{
+    @apply block text-sm font-medium text-gray-700
+}
 .input {
 	@apply mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md overflow-hidden h-8 px-2 border;
 }

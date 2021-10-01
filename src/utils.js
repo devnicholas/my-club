@@ -20,6 +20,9 @@ const storage = {
 			}
 		);
 	},
+	removeAll: () => {
+		localStorage.clear();
+	},
 };
 
 const layout = {
@@ -48,8 +51,8 @@ const layout = {
 		Array.from(tabs).forEach((el) => {
 			el.classList.remove("active");
 		});
-        layout.toggleClass(`${tabName}-container`, 'active')
-        layout.toggleClass(`${tabName}`, 'active')
+		layout.toggleClass(`${tabName}-container`, "active");
+		layout.toggleClass(`${tabName}`, "active");
 	},
 };
 
@@ -94,20 +97,48 @@ const events = {
 		const id = form.elements["id"]
 			? form.elements["id"].value
 			: storage.generateUuid();
-		const title = form.elements["title"].value;
+
+		const adversary = form.elements["adversary"].value;
+		const competition = form.elements["competition"].value;
+		const locale = form.elements["locale"].value;
+		const club = config.getClub();
+
+		const GP = form.elements["GP"].value;
+		const GS = form.elements["GS"].value;
+		let color = "blue";
+		if (GP && GS) {
+			if (GP === GS) {
+				color = "yellow";
+			} else if (GP > GS) {
+				color = "green";
+			} else {
+				color = "red";
+			}
+		}
+
+		const title =
+			locale === "1"
+				? `${club} ${GP} - ${GS} ${adversary} (${competition})`
+				: `${adversary} ${GS} - ${GP} ${club} (${competition})`;
+
 		const start = form.elements["start"].value;
-		const color = form.elements["color"].value;
 		const description = form.elements["description"].value;
 		const event = {
 			id,
 			title,
 			start,
 			color,
+			adversary,
+			competition,
+			locale,
+			GP,
+			GS,
 			description,
 			display: "block",
 			textColor: color !== "blue" || color !== "blue" ? "#000" : "#FFF",
 			className: "ev-item",
 		};
+		console.log(event);
 		form.reset();
 		return event;
 	},
@@ -115,16 +146,47 @@ const events = {
 		const event = data.findEvent(id);
 		const form = document.getElementById("editEvent");
 		form.elements["id"].value = event.id;
-		form.elements["title"].value = event.title;
+		form.elements["adversary"].value = event.adversary;
+		form.elements["competition"].value = event.competition;
+		form.elements["GP"].value = event.GP;
+		form.elements["GS"].value = event.GS;
 		form.elements["start"].value = event.start;
-		form.elements["color"].value = event.color;
 		form.elements["description"].value = event.description;
+		if (event.locale === "2") {
+			document.querySelector("#editEvent #editHome").checked = false;
+			document.querySelector("#editEvent #editOut").checked = true;
+		} else {
+			document.querySelector("#editEvent #editOut").checked = false;
+			document.querySelector("#editEvent #editHome").checked = true;
+		}
 		layout.toggleModal("modal-edit-event");
 	},
 };
 const config = {
 	getData: () => {
 		return storage.getItemLocal("config");
+	},
+	getClub: () => {
+		const configs = storage.getItemLocal("config");
+		return configs && configs.club ? configs.club : "MyClub";
+	},
+	exportData: () => {
+		const allKeys = ["events", "config"];
+		const nonArrayKeys = [];
+		let data = {};
+		allKeys.forEach((key) => {
+			const value = storage.getItemLocal(
+				key,
+				!nonArrayKeys.includes(key)
+			);
+			data = { ...data, [key]: value };
+		});
+		return JSON.stringify(data);
+	},
+	importData: (data) => {
+		for (var key in data) {
+			storage.setItemLocal(key, data[key], typeof data[key] === 'object')
+		}
 	},
 };
 

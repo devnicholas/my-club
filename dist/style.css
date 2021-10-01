@@ -32269,6 +32269,20 @@ video {
   }
 }
 
+.modal-container .modal-bg {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  --tw-bg-opacity: 1;
+  background-color: rgba(107, 114, 128, var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.75;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms
+}
+
 .modal-container .modal {
   display: inline-block;
   --tw-translate-x: 0;
@@ -32319,6 +32333,15 @@ video {
 }
 
 /* Inputs */
+
+.label{
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgba(55, 65, 81, var(--tw-text-opacity))
+}
 
 .input {
   margin-top: 0.25rem;
