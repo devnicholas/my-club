@@ -12,87 +12,83 @@
 		/>
 		<link rel="stylesheet" href="./dist/style.css" />
 	</head>
-	<body class="bg-indigo-100" id="configuration-page">
+	<body class="bg-indigo-100" id="notes-page">
 		<header class="container mx-auto mt-1">
 			<h1 class="text-center font-semibold text-3xl" id="myClub">
 				MyClub
 			</h1>
 		</header>
 		<div class="container mx-auto pt-3 px-1">
-			<!-- Tabs -->
-			<div class="bg-white mb-1">
-				<nav class="flex flex-row">
-					<button class="tab active" id="tab-club">Meu clube</button>
-					<button class="tab" id="tab-export">Dados</button>
-				</nav>
-			</div>
-			<div class="tab-container active" id="tab-club-container">
-				<form class="sm:flex" id="configurations">
-					<div class="sm:w-1/3 mb-1 sm:pr-1">
-						<label
-							for="clubLong"
-							class="block text-sm font-medium text-gray-700"
-							>Nome completo do clube</label
+			<button class="btn btn-blue mb-1" id="openModal">
+				Adicionar anotação
+			</button>
+			<div class="flex flex-col" id="notes-list"></div>
+		</div>
+		<!-- Modal Anotação -->
+		<div
+			id="modal-note"
+			class="hidden z-50 inset-0 overflow-y-auto"
+			aria-labelledby="modal-title"
+			role="dialog"
+			aria-modal="true"
+		>
+			<div class="modal-container">
+				<div class="modal-bg" aria-hidden="true"></div>
+				<span
+					class="hidden sm:inline-block sm:align-middle sm:h-screen"
+					aria-hidden="true"
+					>&#8203;</span
+				>
+				<div class="modal">
+					<div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+						<form
+							id="noteForm"
+							class="sm:flex sm:items-start sm:flex-wrap"
 						>
-						<input
-							type="text"
-							name="clubLong"
-							id="clubLong"
-							class="input"
-						/>
+							<input type="hidden" name="id" />
+							<div class="sm:w-full mb-1 sm:pr-1">
+								<label for="title" class="label">Título</label>
+								<input
+									type="text"
+									name="title"
+									id="title"
+									class="input"
+								/>
+							</div>
+							<div class="sm:w-full mb-1 sm:pr-1">
+								<label for="note" class="label">Anotação</label>
+								<textarea
+									type="text"
+									name="note"
+									id="note"
+									class="input textarea"
+								></textarea>
+							</div>
+						</form>
 					</div>
-					<div class="sm:w-1/3 mb-1 sm:pr-1">
-						<label
-							for="club"
-							class="block text-sm font-medium text-gray-700"
-							>Nome do clube</label
+					<div
+						class="
+							bg-gray-50
+							px-4
+							py-3
+							sm:px-6 sm:flex sm:flex-row-reverse
+						"
+					>
+						<button
+							type="button"
+							class="btn btn-green mb-1 sm:mb-0"
+							id="saveNote"
 						>
-						<input
-							type="text"
-							name="club"
-							id="club"
-							class="input"
-						/>
+							Salvar
+						</button>
+						<button
+							type="button"
+							class="btn btn-white"
+							id="closeModal"
+						>
+							Cancelar
+						</button>
 					</div>
-				</form>
-				<div class="sm:flex sm:justify-end">
-					<button
-						type="button"
-						class="btn btn-green"
-						id="saveConfigs"
-					>
-						Salvar
-					</button>
-				</div>
-			</div>
-			<div class="tab-container" id="tab-export-container">
-				<p class="font-medium text-gray-700 mb-3">
-					Para saber mais sobre como são armazenados os dados do seu
-					clube, acesse a página
-					<a href="about.html" class="underline">sobre o MyClub</a> .
-				</p>
-				<div class="sm:flex sm:justify-between">
-					<button
-						type="button"
-						class="btn btn-blue mb-1"
-						id="exportData"
-					>
-						Exportar dados
-					</button>
-					<button
-						type="button"
-						class="btn btn-green mb-1"
-						id="importData"
-					>
-						Importar dados
-					</button>
-					<button
-						type="button"
-						class="btn btn-red mb-1"
-						id="cleanData"
-					>
-						Excluir dados
-					</button>
 				</div>
 			</div>
 		</div>

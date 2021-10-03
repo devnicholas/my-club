@@ -29,6 +29,9 @@
 .input {
 	@apply mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md overflow-hidden h-8 px-2 border;
 }
+.textarea {
+	@apply h-20
+}
 .select {
 	@apply mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md overflow-hidden h-8 border;
 }

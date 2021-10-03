@@ -38,6 +38,12 @@ const layout = {
 		const el = document.getElementById(id);
 		el.addEventListener("click", callback);
 	},
+	addClickEvents: (id, callback) => {
+		const elements = document.getElementsByClassName(id);
+		for (var i=0, max=elements.length; i < max; i++) {
+			elements[i].addEventListener("click", callback);
+	   }
+	},
 	toggleModal: (id) => {
 		layout.toggleClass(id, "hidden");
 		layout.toggleClass(id, "fixed");
@@ -68,6 +74,10 @@ const data = {
 	findEvent: (id) => {
 		const events = data.getAllEvents();
 		return events.find((ev) => ev.id === id);
+	},
+	findNote: (id) => {
+		const notes = storage.getItemLocal("notes");
+		return notes.find((note) => note.id === id);
 	},
 	editEvent: (event) => {
 		let events = data.getAllEvents();

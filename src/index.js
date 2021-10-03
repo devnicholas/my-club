@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	if (document.getElementById("welcome")) {
 		require("./welcome");
 	} else {
-		console.log(utils.storage.getItemLocal("onboarding", false));
 		if (!utils.storage.getItemLocal("onboarding", false))
 			location.href = "welcome.html";
 
@@ -16,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
 			require("./homepage");
 		} else if (document.getElementById("configuration-page")) {
 			require("./configuration");
+		} else if (document.getElementById("notes-page")) {
+			require("./notes");
 		}
 	}
 });
