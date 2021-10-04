@@ -22,7 +22,8 @@ utils.layout.addClickEvent("tab-export", () => {
 });
 utils.layout.addClickEvent("exportData", () => {
 	const data = utils.config.exportData()
-    window.prompt("Copie o texto abaixo e lembre-se de salvar em um lugar seguro ;)", data);
+    utils.config.copyText(data)
+    alert('Texto copiado para a área de transferência')
 });
 utils.layout.addClickEvent("importData", () => {
     const dataText = window.prompt("Cole aqui o texto copiado anteriormente");
@@ -38,3 +39,12 @@ utils.layout.addClickEvent("cleanData", () => {
         location.reload()
     }
 });
+function copy(text) {
+    var input = document.createElement('textarea');
+    input.innerHTML = text;
+    document.body.appendChild(input);
+    input.select();
+    var result = document.execCommand('copy');
+    document.body.removeChild(input);
+    return result;
+}

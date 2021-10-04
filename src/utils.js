@@ -198,6 +198,9 @@ const config = {
 			storage.setItemLocal(key, data[key], typeof data[key] === "object");
 		}
 	},
+	copyText: (text) => {
+		navigator.clipboard.writeText(text)
+	}
 };
 
 module.exports = {
