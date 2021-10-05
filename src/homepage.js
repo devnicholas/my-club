@@ -1,10 +1,6 @@
 const utils = require("./utils");
 function init() {
-	const today = new Date();
-	const initialDate =
-		utils.storage.getItemLocal("lastUpdate", false) ||
-		`${today.getFullYear()}-${today.getMonth()}-${today.getDay()}}`;
-	
+	const initialDate = utils.storage.getItemLocal("lastUpdate", false);
 
 	const calendarEl = document.getElementById("calendar");
 	const events = utils.data.getAllEvents();
@@ -38,7 +34,7 @@ function init() {
 	calendar.render();
 
 	utils.layout.addClickEvent("openNewEventModal", () => {
-		utils.events.setDate()
+		utils.events.setDate();
 		utils.layout.toggleModal("modal-new-event");
 	});
 	utils.layout.addClickEvent("closeNewEventModal", () => {
