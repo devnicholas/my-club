@@ -1,9 +1,16 @@
 const utils = require("./utils");
 function init() {
+	const today = new Date();
+	const initialDate =
+		utils.storage.getItemLocal("lastUpdate", false) ||
+		`${today.getFullYear()}-${today.getMonth()}-${today.getDay()}}`;
+	
+
 	const calendarEl = document.getElementById("calendar");
 	const events = utils.data.getAllEvents();
 	const calendar = new FullCalendar.Calendar(calendarEl, {
 		initialView: "listYear",
+		initialDate,
 		events,
 		headerToolbar: {
 			right: "prev,next",
@@ -31,6 +38,7 @@ function init() {
 	calendar.render();
 
 	utils.layout.addClickEvent("openNewEventModal", () => {
+		utils.events.setDate()
 		utils.layout.toggleModal("modal-new-event");
 	});
 	utils.layout.addClickEvent("closeNewEventModal", () => {

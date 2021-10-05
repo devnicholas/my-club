@@ -40,9 +40,9 @@ const layout = {
 	},
 	addClickEvents: (id, callback) => {
 		const elements = document.getElementsByClassName(id);
-		for (var i=0, max=elements.length; i < max; i++) {
+		for (var i = 0, max = elements.length; i < max; i++) {
 			elements[i].addEventListener("click", callback);
-	   }
+		}
 	},
 	toggleModal: (id) => {
 		layout.toggleClass(id, "hidden");
@@ -66,6 +66,7 @@ const data = {
 	newEvent: (data) => {
 		const events = storage.getItemLocal("events");
 		events.push(data);
+		storage.setItemLocal("lastDate", data.start, false);
 		storage.setItemLocal("events", events);
 	},
 	getAllEvents: () => {
@@ -87,9 +88,14 @@ const data = {
 				ev.start = event.start;
 				ev.color = event.color;
 				ev.description = event.description;
+				ev.GP = event.GP;
+				ev.GS = event.GS;
+				ev.adversary = event.adversary;
+				ev.competition = event.competition;
 			}
 			return ev;
 		});
+		storage.setItemLocal("lastUpdate", event.start, false);
 		storage.setItemLocal("events", events);
 	},
 	removeEvent: (event) => {
@@ -148,7 +154,6 @@ const events = {
 			textColor: color !== "blue" || color !== "blue" ? "#000" : "#FFF",
 			className: "ev-item",
 		};
-		console.log(event);
 		form.reset();
 		return event;
 	},
@@ -170,6 +175,14 @@ const events = {
 			document.querySelector("#editEvent #editHome").checked = true;
 		}
 		layout.toggleModal("modal-edit-event");
+	},
+	setDate: () => {
+		if (storage.getItemLocal("lastDate", false)) {
+			const dateControl = document.querySelector(
+				'#modal-new-event input[type="date"]'
+			);
+			dateControl.value = storage.getItemLocal("lastDate", false);
+		}
 	},
 };
 const config = {
@@ -199,8 +212,8 @@ const config = {
 		}
 	},
 	copyText: (text) => {
-		navigator.clipboard.writeText(text)
-	}
+		navigator.clipboard.writeText(text);
+	},
 };
 
 module.exports = {

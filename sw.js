@@ -4,13 +4,13 @@ self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
       return cache.addAll([
-        'index.html',
-        'welcome.html',
-        'notes.html',
-        'configurations.html',
-        'dist/style.css',
-        'dist/main.js',
-        'manifest.json'
+        // 'index.html',
+        // 'welcome.html',
+        // 'notes.html',
+        // 'configurations.html',
+        // 'dist/style.css',
+        // 'dist/main.js',
+        // 'manifest.json'
       ]);
     })
   )
